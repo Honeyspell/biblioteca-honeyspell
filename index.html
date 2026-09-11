@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Biblioteca Honeyspell</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(212,170,91,.12), transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(212,170,91,.10), transparent 25%),
+        #07150d;
+    color: #f1d79b;
+    overflow-x: hidden;
+}
+
+.magia {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.estrella {
+    position: absolute;
+    color: #e8c77c;
+    animation: flotar 5s infinite ease-in-out;
+    opacity: .8;
+}
+
+.estrella:nth-child(1) { left: 10%; top: 15%; font-size: 18px; }
+.estrella:nth-child(2) { left: 82%; top: 20%; font-size: 13px; animation-delay: 1s; }
+.estrella:nth-child(3) { left: 20%; top: 75%; font-size: 12px; animation-delay: 2s; }
+.estrella:nth-child(4) { left: 88%; top: 72%; font-size: 20px; animation-delay: 3s; }
+.estrella:nth-child(5) { left: 50%; top: 10%; font-size: 11px; animation-delay: 1.5s; }
+
+@keyframes flotar {
+    0%,100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-15px) scale(1.15); }
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+    padding: 45px 20px;
+}
+
+.borde {
+    border: 1px solid #b88945;
+    padding: 8px;
+    box-shadow: 0 0 25px rgba(214,168,87,.12);
+}
+
+.interior {
+    border: 1px solid rgba(216,174,98,.55);
+    padding: 35px 20px 45px;
+}
+
+.logo {
+    width: min(260px, 70%);
+    border-radius: 50%;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 15px rgba(218,175,91,.25));
+}
+
+h1 {
+    font-size: clamp(32px, 8vw, 65px);
+    margin: 10px 0;
+    letter-spacing: 5px;
+    color: #e6bc72;
+}
+
+.subtitulo {
+    font-size: 16px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+.decoracion {
+    font-size: 22px;
+    letter-spacing: 12px;
+    margin: 20px 0;
+}
+
+.libro {
+    max-width: 470px;
+    margin: 30px auto;
+    padding: 28px 22px;
+    background: rgba(20,43,29,.8);
+    border: 1px solid #a9793e;
+    box-shadow: 0 8px 30px rgba(0,0,0,.35);
+    transition: .4s;
+}
+
+.libro:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 35px rgba(210,165,82,.15);
+}
+
+.libro h2 {
+    margin-top: 5px;
+    color: #f0cf8a;
+    font-size: 28px;
+}
+
+.libro p {
+    color: #dbcda9;
+    line-height: 1.7;
+}
+
+.boton {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 25px;
+    border: 1px solid #d2a85d;
+    color: #f0d18f;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: .3s;
+}
+
+.boton:hover {
+    background: #c69b50;
+    color: #07150d;
+}
+
+.pie {
+    margin-top: 45px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #aa9469;
+}
+</style>
+</head>
+
+<body>
+
+<div class="magia">
+    <span class="estrella">✦</span>
+    <span class="estrella">✧</span>
+    <span class="estrella">✦</span>
+    <span class="estrella">✧</span>
+    <
