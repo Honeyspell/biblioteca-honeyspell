@@ -1,116 +1,72 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Biblioteca Honeyspell</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
-    min-height: 100vh;
+    background: #07150d;
+    color: #f0d18f;
     font-family: Georgia, serif;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(212,170,91,.12), transparent 25%),
-        radial-gradient(circle at 80% 70%, rgba(212,170,91,.10), transparent 25%),
-        #07150d;
-    color: #f1d79b;
-    overflow-x: hidden;
-}
-
-.magia {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.estrella {
-    position: absolute;
-    color: #e8c77c;
-    animation: flotar 5s infinite ease-in-out;
-    opacity: .8;
-}
-
-.estrella:nth-child(1) { left: 10%; top: 15%; font-size: 18px; }
-.estrella:nth-child(2) { left: 82%; top: 20%; font-size: 13px; animation-delay: 1s; }
-.estrella:nth-child(3) { left: 20%; top: 75%; font-size: 12px; animation-delay: 2s; }
-.estrella:nth-child(4) { left: 88%; top: 72%; font-size: 20px; animation-delay: 3s; }
-.estrella:nth-child(5) { left: 50%; top: 10%; font-size: 11px; animation-delay: 1.5s; }
-
-@keyframes flotar {
-    0%,100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-15px) scale(1.15); }
+    text-align: center;
 }
 
 .contenedor {
-    width: 90%;
-    max-width: 850px;
+    max-width: 800px;
     margin: auto;
-    text-align: center;
-    padding: 45px 20px;
+    padding: 35px 20px;
 }
 
-.borde {
-    border: 1px solid #b88945;
+.marco {
+    border: 1px solid #c69b50;
     padding: 8px;
-    box-shadow: 0 0 25px rgba(214,168,87,.12);
+    box-shadow: 0 0 30px rgba(220,180,90,.15);
 }
 
 .interior {
-    border: 1px solid rgba(216,174,98,.55);
-    padding: 35px 20px 45px;
+    border: 1px solid #9f7742;
+    padding: 30px 20px 45px;
 }
 
 .logo {
-    width: min(260px, 70%);
+    width: min(280px, 75%);
     border-radius: 50%;
     margin-bottom: 15px;
-    filter: drop-shadow(0 0 15px rgba(218,175,91,.25));
+    box-shadow: 0 0 25px rgba(220,180,90,.25);
 }
 
 h1 {
-    font-size: clamp(32px, 8vw, 65px);
-    margin: 10px 0;
+    font-size: 42px;
     letter-spacing: 5px;
+    margin: 10px 0;
     color: #e6bc72;
 }
 
 .subtitulo {
-    font-size: 16px;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    margin-bottom: 40px;
+    font-size: 15px;
 }
 
-.decoracion {
-    font-size: 22px;
+.estrellas {
+    font-size: 25px;
     letter-spacing: 12px;
-    margin: 20px 0;
+    margin: 25px 0;
 }
 
 .libro {
-    max-width: 470px;
-    margin: 30px auto;
-    padding: 28px 22px;
-    background: rgba(20,43,29,.8);
+    max-width: 450px;
+    margin: 35px auto;
+    padding: 25px;
     border: 1px solid #a9793e;
+    background: rgba(20,43,29,.85);
     box-shadow: 0 8px 30px rgba(0,0,0,.35);
-    transition: .4s;
-}
-
-.libro:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 12px 35px rgba(210,165,82,.15);
 }
 
 .libro h2 {
-    margin-top: 5px;
     color: #f0cf8a;
     font-size: 28px;
 }
@@ -123,12 +79,11 @@ h1 {
 .boton {
     display: inline-block;
     margin-top: 15px;
-    padding: 12px 25px;
+    padding: 13px 25px;
     border: 1px solid #d2a85d;
     color: #f0d18f;
     text-decoration: none;
     letter-spacing: 2px;
-    transition: .3s;
 }
 
 .boton:hover {
@@ -137,8 +92,8 @@ h1 {
 }
 
 .pie {
-    margin-top: 45px;
-    font-size: 13px;
+    margin-top: 40px;
+    font-size: 12px;
     letter-spacing: 2px;
     color: #aa9469;
 }
@@ -147,9 +102,53 @@ h1 {
 
 <body>
 
-<div class="magia">
-    <span class="estrella">✦</span>
-    <span class="estrella">✧</span>
-    <span class="estrella">✦</span>
-    <span class="estrella">✧</span>
-    <
+<div class="contenedor">
+<div class="marco">
+<div class="interior">
+
+<img class="logo" src="IMG_20260909_200337_535.jpg" alt="Logo de Honeyspell">
+
+<div class="estrellas">✦ ✧ ✦</div>
+
+<h1>Biblioteca Honeyspell</h1>
+
+<div class="subtitulo">
+Un rincón donde las historias cobran vida
+</div>
+
+<div class="estrellas">☕ ✦ 📖 ✦ 🪄</div>
+
+<p>
+Bienvenido a la biblioteca de Honeyspell,
+donde cada libro guarda un pequeño secreto mágico.
+</p>
+
+<div class="libro">
+
+<div class="estrellas">✧</div>
+
+<h2>Teoría Mágica</h2>
+
+<p>
+Una introducción a los principios fundamentales
+de la magia, la energía, la concentración y la intención.
+</p>
+
+<p><em>Por Septimus Waffling</em></p>
+
+<a class="boton" href="teoria-magica.md">
+✦ ABRIR LIBRO ✦
+</a>
+
+</div>
+
+<div class="pie">
+HONEYSPELL · CAFÉ · PUFFSKEINS · POSTRES · MÁS
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>
