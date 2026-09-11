@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Teoría Mágica — Biblioteca Honeyspell</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(210,170,90,.12), transparent 30%),
+    radial-gradient(circle at 80% 80%, rgba(210,170,90,.10), transparent 30%),
+    #07150d;
+  color: #382817;
+  font-family: Georgia, serif;
+  overflow-x: hidden;
+}
+
+.magia {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.magia span {
+  position: absolute;
+  color: #d8ad61;
+  animation: flotar 5s infinite ease-in-out;
+}
+
+.magia span:nth-child(1) { left: 8%; top: 15%; }
+.magia span:nth-child(2) { left: 88%; top: 20%; animation-delay: 1s; }
+.magia span:nth-child(3) { left: 15%; top: 75%; animation-delay: 2s; }
+.magia span:nth-child(4) { left: 82%; top: 72%; animation-delay: 3s; }
+.magia span:nth-child(5) { left: 50%; top: 8%; animation-delay: 1.5s; }
+
+@keyframes flotar {
+  0%,100% { transform: translateY(0) scale(1); opacity:.5; }
+  50% { transform: translateY(-15px) scale(1.2); opacity:1; }
+}
+
+.contenedor {
+  width: 94%;
+  max-width: 850px;
+  margin: auto;
+  padding: 25px 10px 45px;
+}
+
+.encabezado {
+  text-align: center;
+  color: #e7c27c;
+  margin-bottom: 20px;
+}
+
+.encabezado small {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.libro {
+  background: #ead9b5;
+  border: 8px solid #8b6235;
+  box-shadow:
+    0 0 0 2px #d2a65d,
+    0 15px 45px rgba(0,0,0,.55);
+  min-height: 650px;
+  position: relative;
+}
+
+.pagina {
+  display: none;
+  min-height: 630px;
+  padding: 45px 32px;
+  background:
+    radial-gradient(circle at top right, rgba(170,130,60,.10), transparent 30%),
+    #f1e3c3;
+}
+
+.pagina.activa {
+  display: block;
+  animation: aparecer .5s ease;
+}
+
+@keyframes aparecer {
+  from { opacity:0; transform:translateX(12px); }
+  to { opacity:1; transform:translateX(0); }
+}
+
+.portada {
+  text-align: center;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.portada.activa {
+  display: flex;
+}
+
+.logo {
+  width: 220px;
+  max-width: 70%;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.portada h1 {
+  font-size: 42px;
+  color: #73502c;
+  margin: 10px 0;
+  letter-spacing: 2px;
+}
+
+.portada h2 {
+  font-size: 18px;
+  color: #96703d;
+  font-weight: normal;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.adorno {
+  color: #b38342;
+  font-size: 25px;
+  letter-spacing: 10px;
+  margin: 20px 0;
+}
+
+.pagina h2 {
+  color: #73502c;
+  text-align: center;
+  font-size: 27px;
+  margin-top: 0;
+}
+
+.pagina h3 {
+  color: #8b6235;
+  font-size: 20px;
+}
+
+.pagina p {
+  font-size: 16px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.pagina li {
+  margin: 12px 0;
+  line-height: 1.6;
+}
+
+.cita {
+  margin: 30px 0;
+  padding: 20px;
+  border-left: 3px solid #b38342;
+  background: rgba(190,150,80,.08);
+  font-style: italic;
+}
+
+.controles {
+  text-align: center;
+  padding: 18px;
+  background: #102719;
+}
+
+.boton {
+  border: 1px solid #d2a65d;
+  background: transparent;
+  color: #efd394;
+  padding: 11px 18px;
+  margin: 4px;
+  font-family: Georgia, serif;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.boton:hover {
+  background: #c49a55;
+  color: #07150d;
+}
+
+.numero {
+  color: #d9bd7d;
+  font-size: 13px;
+  margin: 0 10px;
+}
+
+.final {
+  text-align: center;
+}
+
+.sello {
+  margin: 30px auto;
+  border: 1px solid #a4773e;
+  padding: 20px;
+  max-width: 400px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="magia">
+  <span>✦</span>
+  <span>✧</span>
+  <span>✦</span>
+  <span>✧</span>
+  <span>✦</span>
+</div>
+
+<div class="contenedor">
+
+  <div class="encabezado">
+    <small>🍯 Biblioteca Honeyspell 🍯</small>
+  </div>
+
+  <div class="libro">
+
+    <!-- PORTADA -->
+    <section class="pagina portada activa">
+
+      <img class="logo"
+      src="IMG_20260909_200337_535.jpg"
+      alt="Honeyspell">
+
+      <div class="adorno">✦ ✧ ✦</div>
+
+      <h1>Teoría Mágica</h1>
+
+      <h2>Fundamentos de la magia y su práctica</h2>
+
+      <div class="adorno">☕ ✦ 🪄 ✦ 📖</div>
+
+      <p style="text-align:center;">
+        Por <strong>Septimus Waffling</strong>
+      </p>
+
+      <p style="text-align:center;">
+        Biblioteca Honeyspell
+      </p>
+
+    </section>
+
+    <!-- PÁGINA 2 -->
+    <section class="pagina">
+
+      <h2>✦ Ficha del ejemplar ✦</h2>
+
+      <div class="adorno" style="text-align:center;">❦</div>
+
+      <p><strong>Título:</strong> Teoría Mágica</p>
+      <p><strong>Autor:</strong> Septimus Waffling</p>
+      <p><strong>Materia:</strong> Teoría Mágica</p>
+      <p><strong>Nivel:</strong> Principiante</p>
+      <p><strong>Colección:</strong> Biblioteca Honeyspell</p>
+
+      <div class="cita">
+        “La magia responde a la voluntad, pero la voluntad necesita conocimiento.”
+      </div>
+
+    </section>
+
+    <!-- PÁGINA 3 -->
+    <section class="pagina">
+
+      <h2>✦ Prólogo ✦</h2>
+
+      <p>
+        La magia es mucho más que una palabra pronunciada,
+        un movimiento de varita o una chispa que aparece en el aire.
+      </p>
+
+      <p>
+        Desde tiempos antiguos, brujas y magos han intentado
+        comprender la naturaleza de la magia, sus límites y las
+        fuerzas que permiten transformarla en hechizos.
+      </p>
+
+      <p>
+        Este pequeño tratado ha sido preparado para aquellos
+        que comienzan a estudiar las bases de la práctica mágica.
+      </p>
+
+      <div class="cita">
+        Estudia con paciencia. Practica con responsabilidad y,
+        sobre todo, nunca confundas poder con habilidad.
+      </div>
+
+    </section>
+
+    <!-- PÁGINA 4 -->
+    <section class="pagina">
+
+      <h2>✦ Capítulo I ✦</h2>
+      <h3>¿Qué es la magia?</h3>
+
+      <p>
+        La magia puede definirse como la capacidad de producir
+        efectos extraordinarios mediante una combinación de
+        energía mágica, intención y técnica.
+      </p>
+
+      <p>
+        Aunque algunos efectos pueden parecer espontáneos,
+        la mayoría de los hechizos requieren práctica y concentración.
+      </p>
+
+      <p>
+        Un mago debe conocer perfectamente las palabras de un
+        encantamiento y, aun así, obtener un resultado diferente
+        si no comprende aquello que intenta realizar.
+      </p>
+
+      <h3>Los tres elementos fundamentales</h3>
+
+      <ol>
+        <li><strong>Intención:</strong> saber qué se desea conseguir.</li>
+        <li><strong>Concentración:</strong> mantener la mente enfocada.</li>
+        <li><strong>Canalización:</strong> dirigir correctamente la energía.</li>
+      </ol>
+
+    </section>
+
+    <!-- PÁGINA 5 -->
+    <section class="pagina">
+
+      <h2>✦ Capítulo II ✦</h2>
+      <h3>La energía mágica</h3>
+
+      <p>
+        La energía mágica se encuentra presente de distintas
+        formas en el mundo mágico.
+      </p>
+
+      <p>
+        Cada bruja y cada mago desarrolla una relación particular
+        con ella. Algunas personas muestran una facilidad natural
+        para determinados tipos de magia, mientras que otras
+        necesitan años de práctica.
+      </p>
+
+      <p>
+        La energía mágica no debe entenderse como una reserva
+        infinita. El cansancio, la falta de concentración y el uso
+        continuado de hechizos pueden afectar la precisión de un mago.
+      </p>
+
+      <div class="cita">
+        Nunca utilices más magia de la necesaria.
+      </div>
+
+    </section>
+
+    <!-- PÁGINA 6 -->
+    <section class="pagina">
+
+      <h2>✦ Capítulo III ✦</h2>
+      <h3>Voluntad y concentración</h3>
+
+      <p>
+        La concentración es una de las habilidades más importantes
+        para cualquier estudiante de magia.
+      </p>
+
+      <p>
+        Una mente distraída puede producir resultados inesperados.
+      </p>
+
+      <p>Antes de realizar un hechizo, un estudiante debería:</p>
+
+      <ol>
+        <li>Respirar profundamente.</li>
+        <li>Identificar claramente su objetivo.</li>
+        <li>Visualizar el resultado.</li>
+        <li>Sujetar la varita con firmeza.</li>
+        <li>Pronunciar el encantamiento con seguridad.</li>
+      </ol>
+
+      <p>
+        No es necesario gritar. La intensidad de la voz no determina
+        la fuerza de un hechizo.
+      </p>
+
+    </section>
+
+    <!-- PÁGINA 7 -->
+    <section class="pagina">
+
+      <h2>✦ Capítulo IV ✦</h2>
+      <h3>La varita como instrumento</h3>
+
+      <p>
+        La varita permite canalizar la magia de manera precisa.
+      </p>
+
+      <p>
+        No todas las varitas responden exactamente de la misma forma.
+        Su madera, núcleo, longitud y características pueden influir
+        en la manera en que un mago canaliza su energía.
+      </p>
+
+      <p>
+        Un estudiante nunca debería considerar la varita simplemente
+        como un objeto. Es una herramienta que requiere cuidado.
+      </p>
+
+      <h3>Reglas básicas</h3>
+
+      <ul>
+        <li>No apuntes una varita hacia otra persona sin motivo.</li>
+        <li>No utilices hechizos que no comprendas.</li>
+        <li>Mantén tu varita limpia y en buenas condiciones.</li>
+      </ul>
+
+    </section>
+
+    <!-- PÁGINA 8 -->
+    <section class="pagina">
+
+      <h2>✦ Capítulo V ✦</h2>
+      <h3>Palabras, movimientos e intención</h3>
+
+      <p>
+        Un hechizo no depende únicamente de las palabras pronunciadas.
+        El movimiento, la intención y la concentración trabajan juntos.
+      </p>
+
+      <p>
+        Una pronunciación incorrecta puede alterar el resultado,
+        pero una pronunciación perfecta tampoco garantiza el éxito
+        si la intención del mago es confusa.
+      </p>
+
+      <div class="cita">
+        Palabra, movimiento e intención deben convertirse en una sola acción.
+      </div>
+
+    </section>
+
+    <!-- PÁGINA 9 -->
+    <section class="pagina">
+
+      <h2>✦ Capítulo VI ✦</h2>
+      <h3>La magia y las emociones</h3>
+
+      <p>
+        Las emociones pueden influir profundamente en la práctica mágica.
+      </p>
+
+      <p>
+        La alegría, el miedo, la ira o la tristeza pueden modificar
+        nuestra concentración y, por consecuencia, la manera en que
+        canalizamos la energía.
+      </p>
+
+      <p>
+        Un buen estudiante no necesita eliminar sus emociones.
+        Debe aprender a reconocerlas y evitar que controlen sus acciones.
+      </p>
+
+    </section>
+
+    <!-- PÁGINA 10 -->
+    <section class="pagina">
+
+      <h2>✦ Capítulo VII ✦</h2>
+      <h3>Errores de los principiantes</h3>
+
+      <p>
+        Los errores forman parte del aprendizaje mágico.
+        Sin embargo, existen algunos que pueden evitarse con paciencia.
+      </p>
+
+      <ul>
+        <li>Intentar aprender demasiados hechizos a la vez.</li>
+        <li>No prestar atención a las instrucciones.</li>
+        <li>Practicar sin conocer los riesgos.</li>
+        <li>Confundir rapidez con habilidad.</li>
+        <li>Ignorar el cansancio.</li>
+      </ul>
+
+      <p>
+        La magia no premia la prisa. Premia la comprensión.
+      </p>
+
+    </section>
+
+    <!-- PÁGINA 11 -->
+    <section class="pagina">
+
+      <h2>✦ Capítulo VIII ✦</h2>
+      <h3>El arte de practicar</h3>
+
+      <p>
+        La práctica constante transforma el conocimiento en habilidad.
+      </p>
+
+      <p>
+        Un estudiante debe comenzar con ejercicios sencillos,
+        registrar sus avances y aprender de sus errores.
+      </p>
+
+      <p>
+        La verdadera habilidad mágica no consiste en realizar el
+        hechizo más poderoso, sino en saber cuándo y cómo utilizarlo.
+      </p>
+
+      <div class="cita">
+        La paciencia también es una forma de magia.
+      </div>
+
+    </section>
+
+    <!-- PÁGINA FINAL -->
+    <section class="pagina final">
+
+      <h2>✦ Ejercicio final ✦</h2>
+
+      <p>
+        Antes de cerrar este libro, toma unos minutos para reflexionar:
+      </p>
+
+      <p>
+        ¿Qué significa para ti la magia?
+      </p>
+
+      <p>
+        ¿Qué cualidad necesitas desarrollar para convertirte
+        en un mejor estudiante?
+      </p>
+
+      <div class="sello">
+        ✦ BIBLIOTECA HONEYSPELL ✦<br><br>
+        Ejemplar disponible para préstamo<br>
+        Precio: 5 Sickles · Duración: 7 días
+      </div>
+
+      <div class="adorno">🍯 ✦ 📖 ✦ 🪄</div>
+
+      <p>
+        <em>Devuelve el conocimiento, no solo el libro.</em>
+      </p>
+
+    </section>
+
+  </div>
+
+  <div class="controles">
+
+    <button class="boton" onclick="anterior()">
+      ← Anterior
+    </button>
+
+    <span class="numero" id="numero">Portada</span>
+
+    <button class="boton" onclick="siguiente()">
+      Siguiente →
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+let paginaActual = 0;
+
+const paginas = document.querySelectorAll(".pagina");
+
+function mostrarPagina() {
+
+  paginas.forEach(p => p.classList.remove("activa"));
+
+  paginas[paginaActual].classList.add("activa");
+
+  if (paginaActual === 0) {
+    document.getElementById("numero").textContent = "Portada";
+  } else {
+    document.getElementById("numero").textContent =
+      "Página " + paginaActual + " de " + (paginas.length - 1);
+  }
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+function siguiente() {
+
+  if (paginaActual < paginas.length - 1) {
+    paginaActual++;
+    mostrarPagina();
+  }
+
+}
+
+function anterior() {
+
+  if (paginaActual > 0) {
+    paginaActual--;
+    mostrarPagina();
+  }
+
+}
+
+</script>
+
+</body>
+</html>
